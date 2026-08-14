@@ -79,9 +79,7 @@ $$
 I(t)=H(0)-H(t)
 $$
 
-A positive value indicates that uncertainty has decreased compared with the initial state. A negative value can occur when the entropy temporarily becomes larger than its initial value.
-
-However, because the probability distribution $p_i(t)$ depends on both the tour costs and the temperature, this quantity should be interpreted carefully. It represents the reduction in uncertainty **under the temperature-dependent Boltzmann model**, rather than a direct measurement of useful information discovered by the search.
+A positive value indicates a reduction in uncertainty relative to the initial state. However, because $p_i(t)$ depends on both tour costs and temperature, this quantity should be interpreted as a reduction in uncertainty **under the temperature-dependent Boltzmann model**, rather than as a direct measure of useful information discovered by the search.
 
 ---
 
@@ -170,9 +168,7 @@ $$
 
 throughout the 50 iterations.
 
-The same 2-opt search process was performed, but the temperature was not decreased.
-
-In contrast to the annealing run, the entropy of the control run remained approximately between 5.1 and 5.8 bits throughout the experiment. Its information gain remained close to zero, although it fluctuated slightly during the search.
+The same 2-opt search process was performed, but the temperature was fixed at 50.0. The entropy remained approximately between 5.1 and 5.8 bits, with information gain staying close to zero.
 
 This comparison suggests that, under the conditions of this experiment, the 2-opt search process alone did not produce a substantial reduction in entropy when the temperature was kept fixed.
 
@@ -184,9 +180,7 @@ This comparison suggests that, under the conditions of this experiment, the 2-op
 
 The annealing run showed a clear overall decrease in entropy, from approximately 5.7 bits to 2.8 bits.
 
-This means that the probability distribution over candidate tours became increasingly concentrated as the search progressed.
-
-This behavior is consistent with the effect of the Simulated Annealing cooling schedule. As the temperature decreases, differences in tour cost have a stronger effect on the Boltzmann probability distribution. Lower-cost tours therefore receive relatively higher probabilities, causing the probability distribution to become more concentrated and the entropy to decrease.
+This means that the probability distribution over candidate tours became increasingly concentrated. As the temperature decreases, differences in tour cost have a stronger effect on the Boltzmann distribution, causing lower-cost tours to receive relatively higher probabilities and entropy to decrease.
 
 ---
 
