@@ -25,29 +25,29 @@ The main purpose of this experiment is not only to observe whether entropy decre
 
 Let
 
-\[
+$$
 S = \{x_1, x_2, \ldots, x_M\}
-\]
+$$
 
-be a population of \(M=100\) candidate TSP tours at iteration \(t\), where each tour \(x_i\) has a total length (cost) \(C(x_i)\).
+be a population of $M=100$ candidate TSP tours at iteration $t$, where each tour $x_i$ has a total length (cost) $C(x_i)$.
 
 The probability assigned to each tour is modeled using a Boltzmann distribution:
 
-\[
+$$
 p_i(t)=
 \frac{\exp\left(-C(x_i)/T(t)\right)}
 {\sum_{j=1}^{M}\exp\left(-C(x_j)/T(t)\right)}
-\]
+$$
 
-where \(T(t)\) is the temperature at iteration \(t\).
+where $T(t)$ is the temperature at iteration $t$.
 
 In Simulated Annealing, the temperature is gradually decreased during the search. A high temperature allows the algorithm to explore a wider range of solutions, including some worse solutions, while a lower temperature makes the search increasingly favor lower-cost solutions.
 
 In this experiment, the initial temperature is
 
-\[
+$$
 T_0=50.0
-\]
+$$
 
 and the temperature is gradually reduced with the progress of the search.
 
@@ -57,15 +57,15 @@ and the temperature is gradually reduced with the progress of the search.
 
 The uncertainty of the solution distribution is measured using Shannon entropy:
 
-\[
+$$
 H(t)=-\sum_{i=1}^{M}p_i(t)\log_2p_i(t)
-\]
+$$
 
-The maximum possible entropy for \(M=100\) equally probable candidates is
+The maximum possible entropy for $M=100$ equally probable candidates is
 
-\[
+$$
 H_{\max}=\log_2(100)\approx6.64\text{ bits}
-\]
+$$
 
 A high entropy indicates that probability is distributed relatively broadly across candidate tours, while a low entropy indicates that probability is concentrated on a smaller number of candidates.
 
@@ -73,15 +73,15 @@ A high entropy indicates that probability is distributed relatively broadly acro
 
 ### 3. Information Gain
 
-The information gain at iteration \(t\) is defined as the reduction in entropy relative to the initial state:
+The information gain at iteration $t$ is defined as the reduction in entropy relative to the initial state:
 
-\[
+$$
 I(t)=H(0)-H(t)
-\]
+$$
 
 A positive value indicates that uncertainty has decreased compared with the initial state. A negative value can occur when the entropy temporarily becomes larger than its initial value.
 
-However, because the probability distribution \(p_i(t)\) depends on both the tour costs and the temperature, this quantity should be interpreted carefully. It represents the reduction in uncertainty **under the temperature-dependent Boltzmann model**, rather than a direct measurement of useful information discovered by the search.
+However, because the probability distribution $p_i(t)$ depends on both the tour costs and the temperature, this quantity should be interpreted carefully. It represents the reduction in uncertainty **under the temperature-dependent Boltzmann model**, rather than a direct measurement of useful information discovered by the search.
 
 ---
 
@@ -138,25 +138,25 @@ The following figure compares the entropy and information gain of the normal Sim
 
 The initial entropy was approximately
 
-\[
+$$
 H(0)\approx5.7\text{ bits}
-\]
+$$
 
 which is relatively close to the theoretical maximum of approximately 6.64 bits for 100 candidates.
 
 During the 50 iterations, the entropy decreased overall and reached approximately
 
-\[
+$$
 H(50)\approx2.8\text{ bits}
-\]
+$$
 
 at the final iteration.
 
 Therefore, the resulting information gain was approximately
 
-\[
+$$
 I(50)=5.7-2.8\approx2.9\text{ bits}
-\]
+$$
 
 This indicates that the probability distribution over candidate tours became substantially more concentrated during the annealing process.
 
@@ -164,9 +164,9 @@ This indicates that the probability distribution over candidate tours became sub
 
 To investigate the cause of this entropy reduction, a control experiment was performed with the temperature fixed at
 
-\[
+$$
 T=50.0
-\]
+$$
 
 throughout the 50 iterations.
 
@@ -214,9 +214,9 @@ The two runs use the same general 2-opt search process, but their entropy behavi
 
 The annealing run shows a large decrease:
 
-\[
+$$
 5.7\rightarrow2.8\text{ bits}
-\]
+$$
 
 while the control run remains around 5.1–5.8 bits.
 
@@ -230,9 +230,9 @@ In other words, simply performing 2-opt operations did not produce a comparable 
 
 The annealing run produced an information gain of approximately 2.9 bits according to
 
-\[
+$$
 I(t)=H(0)-H(t)
-\]
+$$
 
 At first glance, this might appear to mean that the search algorithm acquired 2.9 bits of information.
 
@@ -240,9 +240,9 @@ However, the control experiment shows why this interpretation is too simple.
 
 The probability distribution is defined as
 
-\[
+$$
 p_i(t)\propto\exp(-C(x_i)/T(t))
-\]
+$$
 
 and therefore depends directly on temperature.
 
