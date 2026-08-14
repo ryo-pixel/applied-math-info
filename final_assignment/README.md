@@ -1,7 +1,7 @@
 # Information-Theoretic Analysis of TSP Search Dynamics
 
 ## Author
-- **Course:** Applied Information Theory / 応用情報概要（※講義名を入力）
+- **Course:** Applied Information Theory / 応用情報概要
 - **Assignment:** Final Project / 最終課題
 - **Student ID:** 6807001k
 - **Name:** [Ryohei Akehi]
