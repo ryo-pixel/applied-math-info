@@ -192,15 +192,11 @@ This behavior is consistent with the effect of the Simulated Annealing cooling s
 
 ### 2. The Entropy Curve Is Not Monotonic
 
-Although the overall entropy decreased, the curve did not decrease smoothly.
+Although the overall entropy decreased, the curve was not monotonic, with several temporary increases during the search. 
 
-There were several temporary increases in entropy during the search.
+This is consistent with the stochastic nature of Simulated Annealing, where worse solutions can occasionally be accepted to escape local optima. 
 
-This behavior is expected because Simulated Annealing is a stochastic optimization method. The algorithm uses 2-opt operations to modify candidate tours, and worse solutions can sometimes be accepted according to the SA acceptance rule.
-
-Therefore, the distribution of candidate costs can temporarily become more dispersed, causing entropy to increase.
-
-These local increases are not necessarily a sign of failure. They reflect the stochastic nature of the search and the ability of Simulated Annealing to temporarily accept worse solutions in order to avoid becoming trapped in local optima.
+These temporary changes in the candidate solutions can alter the Boltzmann probability distribution, resulting in short-term increases in entropy.
 
 ---
 
@@ -256,31 +252,10 @@ This is an important limitation of using entropy in this particular formulation.
 
 ---
 
-### 5. Why Does the Control Run Not Show a Large Entropy Reduction?
 
-In the fixed-temperature control run, the temperature remains at 50.0.
+### 5. Why Does Entropy Not Reach Zero?
 
-Therefore, the Boltzmann distribution does not become increasingly sharp simply because the temperature decreases.
-
-Although the 2-opt search continues to modify the candidate tours, the entropy remains relatively stable.
-
-This indicates that, in this experiment, the changes in the candidate solution population alone were not sufficient to cause a large reduction in the entropy measured by the proposed Boltzmann model.
-
-This result emphasizes that the measured entropy is affected not only by the quality of the candidate solutions, but also by the temperature parameter used to define their probabilities.
-
----
-
-### 6. Why Does Entropy Not Reach Zero?
-
-The final entropy of the annealing run is approximately 2.8 bits rather than zero.
-
-Entropy reaches zero only when the probability distribution is completely concentrated on a single candidate.
-
-The population in this experiment does not reach such a state. There are still multiple candidate tours with non-negligible probabilities at the end of the 50 iterations.
-
-This is reasonable given the limited number of iterations and the stochastic nature of Simulated Annealing.
-
-Therefore, a non-zero final entropy does not necessarily indicate that the optimization failed. It indicates that uncertainty about the candidate solutions still remains under the defined probability model.
+The final entropy remained above zero because the probability distribution was not completely concentrated on a single candidate.
 
 ---
 
